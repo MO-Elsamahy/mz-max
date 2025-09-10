@@ -1,0 +1,83 @@
+title: MZ Max Professional
+description: The Ultimate Machine Learning and Deep Learning Platform
+url: "https://mzmax.github.io"
+baseurl: "/mz-max"
+
+# Theme
+theme: jekyll-theme-primer
+remote_theme: primer/github-primer-theme
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+
+# SEO
+author: MZ Max Development Team
+twitter:
+  username: mzmax
+social:
+  name: MZ Max Professional
+  links:
+    - https://github.com/mzmax/mz-max
+
+# Navigation
+nav:
+  - name: Home
+    url: /
+  - name: Documentation
+    url: /docs/
+  - name: Examples
+    url: /examples/
+  - name: API Reference
+    url: /api/
+  - name: GitHub
+    url: https://github.com/mzmax/mz-max
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Code highlighting
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Include
+include:
+  - _pages
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+  examples:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "examples"
+    values:
+      layout: "default"
