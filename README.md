@@ -139,8 +139,8 @@ MZ Max provides four distinct user interfaces, each optimized for different use 
 
 Professional web interface for interactive machine learning workflows.
 
-{screenshot_streamlit_dashboard_home}
-*Screenshot: Navigate to http://localhost:8501 after running `python launch_dashboard.py`. Capture the main dashboard showing the home page with metrics cards, quick actions, and recent activity timeline.*
+<img width="1792" height="829" alt="dashboard_home" src="https://github.com/user-attachments/assets/2b4f28c3-9aba-4333-a3bd-4a602bb6f8d9" />
+
 
 **Features:**
 - Interactive data exploration with drag-and-drop file upload
@@ -155,15 +155,15 @@ python launch_dashboard.py
 # Access at: http://localhost:8501
 ```
 
-{screenshot_streamlit_data_explorer}
-*Screenshot: Click on "Data Explorer" tab in the dashboard. Load the iris dataset and show the data preview, statistical summary, and correlation heatmap visualization.*
+<img width="1830" height="768" alt="data_explorer" src="https://github.com/user-attachments/assets/568880c0-cf40-4fc4-a20d-c05572dcabbb" />
+
 
 ### REST API & Web Application (FastAPI)
 
 Enterprise-grade API with modern web interface for production deployments.
 
-{screenshot_fastapi_web_interface}
-*Screenshot: Navigate to http://localhost:8000 after running `python launch_webapp.py`. Capture the professional landing page showing feature cards, system metrics, and quick links.*
+<img width="1825" height="777" alt="fastapi_web_interface" src="https://github.com/user-attachments/assets/f058da13-ea50-4874-880f-db04d085a397" />
+
 
 **Features:**
 - Comprehensive REST API with automatic documentation
@@ -180,15 +180,13 @@ python launch_webapp.py
 # API Documentation: http://localhost:8000/docs
 ```
 
-{screenshot_fastapi_api_docs}
-*Screenshot: Navigate to http://localhost:8000/docs to show the interactive API documentation with all endpoints, request/response schemas, and the "Try it out" functionality.*
+<img width="1796" height="820" alt="fastapi_api_docs" src="https://github.com/user-attachments/assets/461a4701-b886-461b-beae-768d6f440586" />
 
 ### Desktop Application (GUI)
 
 Native desktop application with professional styling and comprehensive features.
 
-{screenshot_desktop_gui_main}
-*Screenshot: Run `python launch_gui.py` and capture the main window showing the multi-tab interface with Data, ML, and Security tabs. Show the professional styling and layout.*
+<img width="1280" height="850" alt="desktop_gui_main" src="https://github.com/user-attachments/assets/b64058ac-00fb-4445-828d-cec76e168fd7" />
 
 **Features:**
 - Multi-tab workflow organization
@@ -203,8 +201,8 @@ Native desktop application with professional styling and comprehensive features.
 python launch_gui.py
 ```
 
-{screenshot_desktop_gui_training}
-*Screenshot: In the desktop GUI, navigate to the ML tab, select a model type, and click "Train Model" to show the progress bar and training interface.*
+<img width="1277" height="851" alt="desktop_gui_training" src="https://github.com/user-attachments/assets/1e79f567-150c-41ab-93b0-855f3f6b9ad3" />
+
 
 ### Jupyter Widgets
 
@@ -532,5 +530,6 @@ MZ Max is released under the MIT License. See [LICENSE](LICENSE) file for detail
 ---
 
 **MZ Max** - Empowering the future of machine learning with enterprise-grade tools and professional user interfaces.
+
 
 Copyright (c) 2024 MZ Max Development Team. All rights reserved.
