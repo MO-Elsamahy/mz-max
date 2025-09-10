@@ -1,0 +1,5 @@
+[console_scripts]
+mzmax = mz_max.cli:main
+mzmax-dashboard = mz_max.ui.dashboard:create_dashboard
+mzmax-gui = mz_max.ui.gui:launch_gui
+mzmax-webapp = mz_max.ui.web_app:launch_web_app
