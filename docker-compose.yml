@@ -1,0 +1,176 @@
+version: '3.8'
+
+services:
+  # Main MZ Max application
+  mzmax-app:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8000:8000"
+    environment:
+      - MZMAX_ENV=production
+      - MZMAX_LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Streamlit Dashboard
+  mzmax-dashboard:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8501:8501"
+    environment:
+      - MZMAX_ENV=production
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    command: ["python", "-m", "streamlit", "run", "mz_max/ui/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    restart: unless-stopped
+    depends_on:
+      - mzmax-app
+
+  # Jupyter Lab for development
+  mzmax-jupyter:
+    build:
+      context: .
+      target: jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./models:/app/models
+    restart: unless-stopped
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # PostgreSQL for metadata storage
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=mzmax
+      - POSTGRES_USER=mzmax
+      - POSTGRES_PASSWORD=mzmax_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+
+  # MLflow for experiment tracking
+  mlflow:
+    image: python:3.10-slim
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=postgresql://mzmax:mzmax_password@postgres:5432/mzmax
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/app/mlruns
+    volumes:
+      - ./mlruns:/app/mlruns
+    command: >
+      bash -c "pip install mlflow psycopg2-binary &&
+               mlflow server --host 0.0.0.0 --port 5000 
+               --backend-store-uri postgresql://mzmax:mzmax_password@postgres:5432/mzmax
+               --default-artifact-root /app/mlruns"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  # Prometheus for monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - mzmax-app
+      - mzmax-dashboard
+      - grafana
+    restart: unless-stopped
+
+# GPU-enabled services (uncomment if you have GPU support)
+  # mzmax-gpu:
+  #   build:
+  #     context: .
+  #     target: gpu
+  #   ports:
+  #     - "8001:8000"
+  #   environment:
+  #     - CUDA_VISIBLE_DEVICES=0
+  #   volumes:
+  #     - ./data:/app/data
+  #     - ./models:/app/models
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
+  #   restart: unless-stopped
+
+volumes:
+  redis_data:
+  postgres_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  default:
+    driver: bridge

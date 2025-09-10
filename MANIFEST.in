@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include requirements.txt
+include pytest.ini
+recursive-include mz_max *.py
+recursive-include examples *.py
+recursive-include tests *.py
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
