@@ -71,7 +71,7 @@ pip install mz-max
 
 ### Development Installation
 ```bash
-git clone https://github.com/mzmax/mz-max.git
+git clone https://github.com/MO-Elsamahy/mz-max.git
 cd mz-max
 pip install -e .
 ```
@@ -533,3 +533,4 @@ MZ Max is released under the MIT License. See [LICENSE](LICENSE) file for detail
 
 
 Copyright (c) 2024 MZ Max Development Team. All rights reserved.
+
