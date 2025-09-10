@@ -423,7 +423,7 @@ security = widgets['security']
 - **Widget Display**: Ensure ipywidgets is properly installed and enabled
 
 ### Getting Help
-- **GitHub Issues**: Report interface-specific bugs
+- **GitHub Issues**: Report interface-specific bugs at [https://github.com/MO-Elsamahy/mz-max/issues](https://github.com/MO-Elsamahy/mz-max/issues)
 - **Documentation**: Check API reference for detailed usage
 - **Community**: Join discussions for tips and tricks
 - **Support**: Email elsamahy771@gmail.com for technical assistance

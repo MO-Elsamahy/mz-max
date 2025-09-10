@@ -1,46 +1,32 @@
-title: MZ Max Professional
+title: MZ Max
 description: The Ultimate Machine Learning and Deep Learning Platform
-url: "https://mzmax.github.io"
+url: "https://MO-Elsamahy.github.io"
 baseurl: "/mz-max"
 
-# Theme
-theme: jekyll-theme-primer
-remote_theme: primer/github-primer-theme
+# Theme - Using default GitHub Pages theme
+theme: jekyll-theme-minimal
 
-# Plugins
+# Plugins (only GitHub Pages compatible ones)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-github-metadata
 
 # SEO
 author: MZ Max Development Team
-twitter:
-  username: mzmax
 social:
-  name: MZ Max Professional
+  name: MZ Max
   links:
-    - https://github.com/mzmax/mz-max
-
-# Navigation
-nav:
-  - name: Home
-    url: /
-  - name: Documentation
-    url: /docs/
-  - name: Examples
-    url: /examples/
-  - name: API Reference
-    url: /api/
-  - name: GitHub
-    url: https://github.com/mzmax/mz-max
+    - https://github.com/MO-Elsamahy/mz-max
 
 # Markdown
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
 
 # Code highlighting
 highlighter: rouge
@@ -50,34 +36,18 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
+  - vendor/
   - README.md
+  - "*.gemspec"
+  - "*.gem"
 
-# Include
-include:
-  - _pages
-
-# Collections
-collections:
-  docs:
-    output: true
-    permalink: /:collection/:name/
-  examples:
-    output: true
-    permalink: /:collection/:name/
+# Permalink structure
+permalink: /:title/
 
 # Defaults
 defaults:
   - scope:
       path: ""
-      type: "docs"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "examples"
+      type: "pages"
     values:
       layout: "default"

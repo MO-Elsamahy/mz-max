@@ -105,7 +105,7 @@ print(f"Accuracy: {metrics['accuracy']:.4f}")
 - **Testing** - Comprehensive test suite with pytest
 
 ### Resources
-- **GitHub Repository** - [https://github.com/mzmax/mz-max](https://github.com/mzmax/mz-max)
+- **GitHub Repository** - [https://github.com/MO-Elsamahy/mz-max](https://github.com/MO-Elsamahy/mz-max)
 - **PyPI Package** - [https://pypi.org/project/mz-max/](https://pypi.org/project/mz-max/)
 - **Docker Images** - [https://hub.docker.com/r/mzmax/mz-max](https://hub.docker.com/r/mzmax/mz-max)
 
@@ -113,7 +113,7 @@ print(f"Accuracy: {metrics['accuracy']:.4f}")
 
 **Version 1.0.0** - Initial enterprise release with comprehensive ML platform and professional UI suite.
 
-[View Release Notes](release-notes.html) | [Download](https://github.com/mzmax/mz-max/releases/latest)
+[View Release Notes](release-notes.html) | [Download](https://github.com/MO-Elsamahy/mz-max/releases/latest)
 
 ---
 

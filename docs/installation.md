@@ -35,7 +35,7 @@ pip install mz-max
 For contributors and developers:
 
 ```bash
-git clone https://github.com/mzmax/mz-max.git
+git clone https://github.com/MO-Elsamahy/mz-max.git
 cd mz-max
 pip install -e ".[dev]"
 ```
@@ -207,7 +207,7 @@ If you encounter installation issues:
 1. **Check System Requirements** - Ensure your system meets minimum requirements
 2. **Update pip** - `pip install --upgrade pip`
 3. **Use Virtual Environment** - Isolate dependencies
-4. **Check GitHub Issues** - Search for similar problems
+4. **Check GitHub Issues** - Search for similar problems at [https://github.com/MO-Elsamahy/mz-max/issues](https://github.com/MO-Elsamahy/mz-max/issues)
 5. **Contact Support** - elsamahy771@gmail.com
 
 ## Next Steps

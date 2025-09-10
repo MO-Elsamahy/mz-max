@@ -351,13 +351,13 @@ Now that you've completed the quick start:
 2. **Read Examples** - Check out [detailed examples](examples/)
 3. **Learn Advanced Features** - Dive into [enterprise security](security.html)
 4. **Deploy to Production** - Follow the [deployment guide](deployment.html)
-5. **Join the Community** - Contribute on [GitHub](https://github.com/mzmax/mz-max)
+5. **Join the Community** - Contribute on [GitHub](https://github.com/MO-Elsamahy/mz-max)
 
 ## Getting Help
 
 - **Documentation** - Browse the complete [API reference](api.html)
 - **Examples** - See real-world [use cases](examples/)
-- **Issues** - Report bugs on [GitHub Issues](https://github.com/mzmax/mz-max/issues)
+- **Issues** - Report bugs on [GitHub Issues](https://github.com/MO-Elsamahy/mz-max/issues)
 - **Support** - Email us at elsamahy771@gmail.com
 
 ---
